@@ -17,6 +17,8 @@ const App = () => {
     setTodos([...todos(), { id: ++todoId, text, completed, setCompleted }]);
   };
   const toggleTodo = (id: number) => {
+    console.log(id);
+
     const index = todos().findIndex((t) => t.id === id);
     const todo = todos()[index];
     if (todo) todo.setCompleted(!todo.completed());
