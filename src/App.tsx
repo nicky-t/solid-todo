@@ -7,8 +7,9 @@ type Todo = {
   setCompleted: (completed: boolean) => void;
 };
 
+const [todos, setTodos] = createSignal<Todo[]>([]);
+
 const App = () => {
-  const [todos, setTodos] = createSignal<Todo[]>([]);
   let input: HTMLInputElement | undefined;
   let todoId = 0;
 
@@ -26,7 +27,7 @@ const App = () => {
 
   return (
     <>
-      <Header todoCount={todos().length} />
+      <Header />
       <div>
         <input ref={input} />
         <button
@@ -65,7 +66,7 @@ const App = () => {
   );
 };
 
-const Header = ({ todoCount }: { todoCount: number }) => {
+const Header = () => {
   return (
     <div
       style={{
@@ -84,7 +85,7 @@ const Header = ({ todoCount }: { todoCount: number }) => {
           "margin-left": "20px",
         }}
       >
-        todoCount: {todoCount}
+        todoCount: {todos().length}
       </p>
     </div>
   );
